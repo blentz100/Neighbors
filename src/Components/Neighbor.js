@@ -31,7 +31,7 @@ export const Neighbor = (props) => {
 					</Card.Text>
 					<Button href ="https://www.zillow.com/b/805-n-4th-ave-phoenix-az-5YNBmJ/"variant="primary">Zillow</Button>
 				</Card.Body>
-					<button onClick={(event) => deleteNeighbor(neighbor.name._id)}>Delete House
+					<button onClick={(event) => deleteNeighbor(neighbor.name._id)}>Delete Neighbor
 					</button>
 			</Card>
 		</div>
