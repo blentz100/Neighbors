@@ -5,6 +5,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import NeighborsList from './Components/NeighborsList';
 import Table from 'react-bootstrap/Table';
+import computer from './images/computer-screen.jpg'
 
 // Good Resource for React Bootstrap
 // https://react-bootstrap.github.io/components/alerts
@@ -37,16 +38,15 @@ export default function App(){
 							<Link to="/about">About</Link>
 						</Button>
 						<Button variant="outline-primary">
-							<Link to="/posts">Posts</Link>
+							<Link to="/resources">Resources</Link>
 						</Button>
 						<Button variant="outline-primary">
 							<Link to="/neighbors">Neighbors</Link>
 						</Button>
 					</ButtonGroup>
-
 					<Switch>
-						<Route path='/posts'>
-							<Posts />
+						<Route path='/resources'>
+							<Resources />
 						</Route>
 						<Route path='/about'>
 							<About  />
@@ -56,6 +56,8 @@ export default function App(){
 						</Route>
 						<Route path="/">
 							<Home />
+							<img src={computer} alt='computer screen' height="600"
+							width="800"/>
 						</Route>
 					</Switch>
 				</div>
@@ -110,9 +112,9 @@ function About(){
 );
 }
 
-function Posts(){
+function Resources(){
 	 return(
-			<h2>Posts</h2>
+			<h2>Resources</h2>
 	 );
 }
 
