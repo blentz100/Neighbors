@@ -28,9 +28,10 @@ export class NeighborsList extends React.Component{
 		await neighborsApi.delete(neighbor_id);	
 		this.fetchNeighbors();
 	}
-	addNewNeighbor = (neighbor) =>{
-		console.log('Inside Neighbor.js: addNewNeighbor function');
+	addNewNeighbor = (neighbor, number) =>{
+		console.log('Inside NeighborList.js: addNewNeighbor function');
 		console.log('neighbor', neighbor);
+		console.log('number: ', number);
 		this.updateNeighbors({ ...neighbor});
 	}
 
@@ -39,7 +40,7 @@ export class NeighborsList extends React.Component{
 		console.log(this.state.neighbors);
 		return(
 			<div>
-				<h1>Inside NeighborsList.js</h1>
+				<h1>Neighbors List</h1>
 				{this.state.neighbors.map((neighbor) => (
 					<Neighbor name={neighbor}
 								updateNeighbors={this.updateNeighbors}

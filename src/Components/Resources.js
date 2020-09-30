@@ -4,7 +4,7 @@ import React from 'react';
 export const Resources = (props) => {
 	return ( 
 		<div>
-			HelloResources
+			<h1>	Hello Resources </h1>
 		</div>
 	);
 

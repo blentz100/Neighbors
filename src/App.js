@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import NeighborsList from './Components/NeighborsList';
 import Table from 'react-bootstrap/Table';
 import computer from './images/computer-screen.jpg'
+import Resources from './Components/Resources'
 
 // Good Resource for React Bootstrap
 // https://react-bootstrap.github.io/components/alerts
@@ -111,11 +112,4 @@ function About(){
 		</div>
 );
 }
-
-function Resources(){
-	 return(
-			<h2>Resources</h2>
-	 );
-}
-
 
