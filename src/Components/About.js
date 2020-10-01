@@ -34,7 +34,7 @@ export const About = () => {
 					<tr>
 						<td>Contain at least 10 <a href="https://reactjs.org/docs/components-and-props.html"> 
 							components</a></td>
-						<td></td>
+						<td>X</td>
 					</tr>
 					<tr>
 						<td>Allow for all CRUD operations</td>

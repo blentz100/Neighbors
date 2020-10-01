@@ -7,6 +7,7 @@ import NeighborsList from './Components/NeighborsList';
 import About from './Components/About.js';
 import Resources from './Components/Resources'
 import Home from './Components/Home'
+import Todo from './Components/Todo'
 
 
 import {
@@ -31,13 +32,16 @@ export default function App(){
 							<Link to="/">Home</Link>
 						</Button>
 						<Button variant="outline-primary">
+							<Link to="/neighbors">Neighbors</Link>
+						</Button>
+						<Button variant="outline-primary">
 							<Link to="/about">About</Link>
 						</Button>
 						<Button variant="outline-primary">
 							<Link to="/resources">Resources</Link>
 						</Button>
 						<Button variant="outline-primary">
-							<Link to="/neighbors">Neighbors</Link>
+							<Link to="/todo">Todo</Link>
 						</Button>
 					</ButtonGroup>
 					<Switch>
@@ -46,6 +50,9 @@ export default function App(){
 						</Route>
 						<Route path='/about'>
 							<About  />
+						</Route>
+						<Route path="/todo">
+							<Todo />
 						</Route>
 						<Route path="/neighbors">
 							<NeighborsList />
