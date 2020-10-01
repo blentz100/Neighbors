@@ -2,6 +2,7 @@ import React from 'react';
 import neighborsApi from '../rest/NeighborsApi';
 import Neighbor from '../Components/Neighbor';
 import {NewNeighborForm} from './NewNeighborForm';
+import neighborsimage from '../images/neighbors.jpg';
 
 export class NeighborsList extends React.Component{
 
@@ -41,6 +42,8 @@ export class NeighborsList extends React.Component{
 		return(
 			<div>
 				<h1>Neighbors List</h1>
+				<img src={neighborsimage} alt='neighbors' height="450"/>
+				
 				{this.state.neighbors.map((neighbor) => (
 					<Neighbor name={neighbor}
 								updateNeighbors={this.updateNeighbors}

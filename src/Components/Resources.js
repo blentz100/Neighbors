@@ -4,46 +4,101 @@ import Tab from 'react-bootstrap/Tab'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import github from '../images/GitHub.png'
+import crudcrud from '../images/crudcrud.png'
+import react from '../images/React.svg'
+import promineo from '../images/promineo.png'
+import resources from '../images/resources.jpg'
 
 export const Resources = () => {
 	return ( 
-		<div width="50%">
+		<div >
 			<h1>Resources </h1>
-				<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+			<img src={resources} alt='resources' height="450"/>
+				<Tabs defaultActiveKey="react" id="uncontrolled-tab-example">
+				  <Tab eventKey="react" title="React">
+					<ReactX />
+				  </Tab>
 				  <Tab eventKey="home" title="Github">
 					<Github />
 				  </Tab>
-				  <Tab eventKey="react" title="React">
-					<Github />
-				  </Tab>
 				  <Tab eventKey="promineo" title="Promineo" >
-					<Github />
+					<Promineo />
 				  </Tab>
 				  <Tab eventKey="crudcrud" title="CrudCrud" >
-					<Github />
+					<CrudCrud />
 				  </Tab>
 		</Tabs>
 		</div>
 	);
-
 }
 function Github(){
 	return(
 		<div>
-			<Card style={{  }}>
-			  <Card.Img variant="top" src={github} height="200" width="200" />
+			<Card style={{ width: '18rem' }}>
+			  <Card.Img variant="top" src={github} />
 			  <Card.Body>
-				<Card.Title>Card Title</Card.Title>
+				<Card.Title>Github</Card.Title>
 				<Card.Text>
-				  Some quick example text to build on the card title and make up the bulk of
-				  the card's content.
+					Used for version control and source control.  
 				</Card.Text>
-				<Button variant="primary">Go somewhere</Button>
+				  <Button variant="primary" href="https://www.github.com">Learn More about Github</Button>
 			  </Card.Body>
 			</Card>	
 
 		</div>
 	)
-
 }
+function Promineo(){
+	return(
+		<div>
+			<Card style={{ width: '18rem' }}>
+			  <Card.Img variant="top" src={promineo} />
+			  <Card.Body>
+				<Card.Title>Promineo</Card.Title>
+				<Card.Text>
+					Coding Bootcamp 
+				</Card.Text>
+				  <Button variant="primary" href="http://www.promineotech.com">Learn more about Promineo</Button>
+			  </Card.Body>
+			</Card>	
+
+		</div>
+	)
+}
+function ReactX(){
+	return(
+		<div>
+			<Card style={{ width: '18rem' }}>
+			  <Card.Img variant="top" src={react} />
+			  <Card.Body>
+				<Card.Title>React</Card.Title>
+				<Card.Text>
+					This assignment uses React to build a CRUD application.
+				</Card.Text>
+				  <Button variant="primary" href="https://reactjs.org/">Learn More about React</Button>
+			  </Card.Body>
+			</Card>	
+
+		</div>
+	)
+}
+function CrudCrud(){
+	return(
+		<div>
+			<Card style={{ width: '18rem' }}>
+			  <Card.Img variant="top" src={crudcrud} />
+			  <Card.Body>
+				<Card.Title>CrudCrud</Card.Title>
+				<Card.Text>
+					CrudCrud provides a low cost API for testing and POCs.
+					Used in this project to develop my own CRUD application.
+				</Card.Text>
+				<Button variant="primary" href="https://crudcrud.com">Learn More about CrudCrud</Button>
+			  </Card.Body>
+			</Card>	
+
+		</div>
+	)
+}
+
 export default Resources;
