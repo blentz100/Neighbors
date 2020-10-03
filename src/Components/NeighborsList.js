@@ -21,7 +21,7 @@ export class NeighborsList extends React.Component{
 
 	updateNeighbors = async(updateNeighbors) => {
 		console.log('*****got inside updateNeighbors!');
-		await neighborsApi.put(updateNeighbors);
+		await neighborsApi.post(updateNeighbors); 
 		this.fetchNeighbors();
 	}
 	
@@ -34,6 +34,14 @@ export class NeighborsList extends React.Component{
 		console.log('neighbor', neighbor);
 		console.log('number: ', number);
 		this.updateNeighbors({ ...neighbor});
+	}
+	updateNeighbor =  async(notes,neighbor_id) =>{
+		console.log('Inside NeighborList.js: updateNeighbor function');
+		console.log('notes', notes);
+		console.log('neighbor_id', notes);
+		await neighborsApi.update(notes,neighbor_id);
+		this.fetchNeighbors();
+
 	}
 
 	render(){
@@ -48,6 +56,7 @@ export class NeighborsList extends React.Component{
 					<Neighbor name={neighbor}
 								updateNeighbors={this.updateNeighbors}
 								removeNeighbor={this.removeNeighbor}
+								updateNeighbor={this.updateNeighbor}
 					/>
 				))}
 				<NewNeighborForm addNewNeighbor={this.addNewNeighbor}/> 

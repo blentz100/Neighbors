@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-
 export const NewNeighborForm = (props) =>{
 	const [name, setName] = useState('');
 	const [number, setNumber] = useState('');

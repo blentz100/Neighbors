@@ -38,7 +38,7 @@ export const About = () => {
 					</tr>
 					<tr>
 						<td>Allow for all CRUD operations</td>
-						<td></td>
+						<td>X</td>
 					</tr>
 				</tbody>
 			</Table>
