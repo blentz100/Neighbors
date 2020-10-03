@@ -11,7 +11,21 @@ class NeighborsApi{
 			//console.log(data);
 			return data;
 		}catch(e){
-			console.log('oops, looks like fetchNeighbors had an issue.',e);
+			console.log('oops, looks like fetchNeighbors inside get had an issue.',e);
+		}
+	}
+
+	/*This get request will get a single neighbor from the API */
+	getSingle = async (neighbor_id) => {
+		try {
+			console.log('inside try block for fetching a getSingle API call');
+			const resp = await fetch(`${NEIGHBORS_ENDPOINT}/${neighbor_id}`);
+			const data = await resp.json();
+			console.log('here is the data back from the API:');
+			console.log(data);
+			return data;
+		}catch(e){
+			console.log('oops, looks like fetchNeighbors inside getSingle had an issue.',e);
 		}
 	}
 
@@ -38,16 +52,23 @@ class NeighborsApi{
 		try {
 			console.log('inside try block for updating a neighbor');
 			console.log('notes is:', notes);
-			console.log('neigbor_id is:', neighbor_id);
+			console.log('neighbor_id is:', neighbor_id);
+			console.log('XXXXXXXnotes.notes is: ' + notes.notes);
 			const resp = await fetch(`${NEIGHBORS_ENDPOINT}/${neighbor_id}`, {
 				 method: 'PUT',
 				 headers :{
-				  'Content-Type' : 'application/JSON'
-				  },
-				body: JSON.stringify(notes)
+				 'Content-Type' : 'application/JSON'
+				 },
+				body: JSON.stringify({
+					"name": notes.name,
+					"number": notes.number,
+					"notes": notes.notes
+				})
 			});
 			const data = await resp.json();
+			console.log('date is: ' + data);
 			return data;
+
 		}catch(e){
 			console.log('oops, looks like update had an issue.',e);
 		}

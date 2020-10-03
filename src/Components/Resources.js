@@ -93,7 +93,9 @@ function CrudCrud(){
 					CrudCrud provides a low cost API for testing and POCs.
 					Used in this project to develop my own CRUD application.
 				</Card.Text>
-				<Button variant="primary" href="https://crudcrud.com">Learn More about CrudCrud</Button>
+				<Button variant="primary"
+				  href="https://crudcrud.com/api/8395807bd67349e78e6b6993d2003e8f/unicorns">Learn
+				More about CrudCrud</Button>
 			  </Card.Body>
 			</Card>	
 

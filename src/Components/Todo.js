@@ -15,6 +15,7 @@ export const Todo = () => {
 			  <ListGroup.Item variant='primary'>Make Top Buttons clickable, not just text</ListGroup.Item>
 			  <ListGroup.Item variant='primary'>Fix Color Contrast of Top Buttons</ListGroup.Item>
 			  <ListGroup.Item variant='primary'>Do something with the Zillow Links</ListGroup.Item>
+			  <ListGroup.Item variant='primary'>Update Title of Page</ListGroup.Item>
 			  <ListGroup.Item variant='secondary'>Add Update functionality for neighbors - done</ListGroup.Item>
 			  <ListGroup.Item variant='secondary'>Make Delete Button Red- done</ListGroup.Item>
 			</ListGroup>

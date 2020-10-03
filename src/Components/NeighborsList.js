@@ -35,15 +35,16 @@ export class NeighborsList extends React.Component{
 		console.log('number: ', number);
 		this.updateNeighbors({ ...neighbor});
 	}
-	updateNeighbor =  async(notes,neighbor_id) =>{
+	updateNeighbor =  async(existingNeighborData,neighbor_id) =>{
 		console.log('Inside NeighborList.js: updateNeighbor function');
-		console.log('notes', notes);
-		console.log('neighbor_id', notes);
-		await neighborsApi.update(notes,neighbor_id);
+		console.log('existingNeighborData', existingNeighborData);
+		console.log('neighbor_id', neighbor_id);
+		await neighborsApi.update(existingNeighborData,neighbor_id);
 		this.fetchNeighbors();
 
 	}
 
+	
 	render(){
 		console.log('inside NeighborsList.js, inside render method, this.state.neighbors');
 		console.log(this.state.neighbors);
