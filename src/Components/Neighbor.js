@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {UpdateNeighborForm} from './UpdateNeighborForm';
 
-
 export const Neighbor = (props) => {
 	console.log('**********Neighbor.js, props is: ', props);
 	console.log(props);
@@ -18,7 +17,6 @@ export const Neighbor = (props) => {
 		console.log('neighborId is: ', neighborId);
 		removeNeighbor(neighborId);				
 	}
-
 	return ( 
 		<div>
 			<br />
@@ -38,7 +36,5 @@ export const Neighbor = (props) => {
 			</Card>
 		</div>
 	);
-
 }
-
 export default Neighbor;

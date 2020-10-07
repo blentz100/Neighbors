@@ -102,5 +102,4 @@ function CrudCrud(){
 		</div>
 	)
 }
-
 export default Resources;

@@ -18,7 +18,6 @@ export const NewNeighborForm = (props) =>{
 			console.log('invalid input');
 		}
 	};
-
 	return (
 		<div>
 			<br />	
