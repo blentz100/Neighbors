@@ -8,13 +8,12 @@ import About from './Components/About.js';
 import Resources from './Components/Resources'
 import Home from './Components/Home'
 import Todo from './Components/Todo'
-
+import Maricopa from './Components/Maricopa'
 
 import {
 	BrowserRouter as Router,
 	Switch,
-	Route,
-	Link
+	Route
 } from 'react-router-dom';
 
 // A single page application is a single page that changes the view
@@ -28,20 +27,23 @@ export default function App(){
 			<Router>
 				<div>
 					<ButtonGroup>
-						<Button variant="outline-primary">
-							<Link to="/">Home</Link>
+						<Button href="/" variant="outline-primary">
+							Home
 						</Button>
-						<Button variant="outline-primary">
-							<Link to="/neighbors">Neighbors</Link>
+						<Button href="/neighbors" variant="outline-primary">
+							Neighbors
 						</Button>
-						<Button variant="outline-primary">
-							<Link to="/about">About</Link>
+						<Button href="/about" variant="outline-primary">
+						About
 						</Button>
-						<Button variant="outline-primary">
-							<Link to="/resources">Resources</Link>
+						<Button href="/resources" variant="outline-primary">
+							Resources
 						</Button>
-						<Button variant="outline-primary">
-							<Link to="/todo">Todo</Link>
+						<Button href="/todo" variant="outline-primary">
+							Todo
+						</Button>
+						<Button href="/maricopa" variant="outline-primary">
+							Maricopa
 						</Button>
 					</ButtonGroup>
 					<Switch>
@@ -56,6 +58,9 @@ export default function App(){
 						</Route>
 						<Route path="/neighbors">
 							<NeighborsList />
+						</Route>
+						<Route path="/maricopa">
+							<Maricopa/>
 						</Route>
 						<Route path="/">
 							<Home />
