@@ -9,6 +9,7 @@ import Resources from './Components/Resources'
 import Home from './Components/Home'
 import Todo from './Components/Todo'
 import Maricopa from './Components/Maricopa'
+import Test from './Components/Test'
 
 import {
 	BrowserRouter as Router,
@@ -45,6 +46,9 @@ export default function App(){
 						<Button href="/maricopa" variant="outline-primary">
 							Maricopa
 						</Button>
+						<Button href="/test" variant="outline-primary">
+							Test
+						</Button>
 					</ButtonGroup>
 					<Switch>
 						<Route path='/resources'>
@@ -61,6 +65,9 @@ export default function App(){
 						</Route>
 						<Route path="/maricopa">
 							<Maricopa/>
+						</Route>
+						<Route path="/test">
+							<Test />
 						</Route>
 						<Route path="/">
 							<Home />

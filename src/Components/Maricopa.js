@@ -4,6 +4,13 @@ import MaricopaApi, {maricopaApi} from '../rest/MaricopaApi';
 /* https://react-table.tanstack.com/docs/quick-start */
 
 
+
+
+
+
+
+
+
 export const Maricopa = () => {
 
 	maricopaApi.getSingle();
