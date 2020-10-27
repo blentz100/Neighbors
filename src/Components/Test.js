@@ -50,7 +50,7 @@ function Table({ columns, data }) {
 
   // We don't want to render all 2000 rows for this example, so cap
   // it at 20 for this use case
-  const firstPageRows = rows.slice(0, 20)
+  const firstPageRows = rows.slice(0, 3)
 
   return (
     <>
@@ -79,7 +79,11 @@ function Table({ columns, data }) {
         <tbody {...getTableBodyProps()}>
           {firstPageRows.map(
             (row, i) => {
-              prepareRow(row);
+			console.log('before prepareRow(row) - row is: ')
+			console.dir(row);
+		    prepareRow(row);
+			console.log('after prepareRow(row) - row is: ')
+			console.dir(row);
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map(cell => {
@@ -105,12 +109,12 @@ function App() {
         Header: 'Name',
         columns: [
           {
-            Header: 'First Name',
-            accessor: 'firstName',
+            Header: 'Unit Number',
+            accessor: 'unitNumber',
           },
           {
-            Header: 'Last Name',
-            accessor: 'lastName',
+            Header: 'Owner Name',
+            accessor: 'ownerName',
           },
         ],
       },
@@ -118,12 +122,12 @@ function App() {
         Header: 'Info',
         columns: [
           {
-            Header: 'Age',
-            accessor: 'age',
+            Header: 'Sale Price',
+            accessor: 'salePrice',
           },
           {
-            Header: 'Visits',
-            accessor: 'visits',
+            Header: 'Sale Date',
+            accessor: 'saleDate',
           },
           {
             Header: 'Status',
@@ -139,8 +143,14 @@ function App() {
     []
   )
 
-const data = React.useMemo(() => makeData(2000), [])
- 
+//Here is where the table demo code gets the fake data to populate it's table
+const data = React.useMemo(() => makeData(20), [])
+console.log ('data is');
+console.dir (data);	
+
+// Here is where I need to get the data from Maricopa API in place of the 
+// fake data above
+
 
   return (
     <Styles>

@@ -1,14 +1,7 @@
 import React from 'react';
-import MaricopaApi, {maricopaApi} from '../rest/MaricopaApi';
+import {maricopaApi} from '../rest/MaricopaApi';
 
 /* https://react-table.tanstack.com/docs/quick-start */
-
-
-
-
-
-
-
 
 
 export const Maricopa = () => {

@@ -1,4 +1,4 @@
-const ASSESSOR_ENDPOINT = "https://api.mcassessor.maricopa.gov/api/search/805";
+const ASSESSOR_ENDPOINT = 'https://api.mcassessor.maricopa.gov/api/search/805 n 4th ave 506'
 
 class MaricopaApi{
 
@@ -8,7 +8,7 @@ class MaricopaApi{
 			console.log('inside try block for fetching a getSingle API call');
 
 			const resp = await
-				fetch('https://api.mcassessor.maricopa.gov/api/search/805 N 4th ave 506', {
+				fetch(ASSESSOR_ENDPOINT, {
 				 method: 'GET',
 				 headers :{
 					  'X-MC-AUTH': 'c44ecb2f94764b828ae483960b877be5',
