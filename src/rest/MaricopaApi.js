@@ -1,4 +1,4 @@
-const ASSESSOR_ENDPOINT = 'https://api.mcassessor.maricopa.gov/api/search/805 n 4th ave 506'
+const ASSESSOR_ENDPOINT = 'https://mcassessor.maricopa.gov/search/Phoenix'
 
 class MaricopaApi{
 
@@ -9,11 +9,11 @@ class MaricopaApi{
 
 			const resp = await
 				fetch(ASSESSOR_ENDPOINT, {
-				 method: 'GET',
-				 headers :{
-					  'X-MC-AUTH': 'c44ecb2f94764b828ae483960b877be5',
-				  'Content-Type' : 'application/JSON'
-				  }
+				 method: "GET",
+				 headers: {
+					"AUTHORIZATION": "c44ecb2f-9476-4b82-8ae4-83960b877be5",
+					"Content-Type" : "application/json"
+				} 
 			});
 
 

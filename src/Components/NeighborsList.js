@@ -14,6 +14,8 @@ export class NeighborsList extends React.Component{
 		this.fetchNeighbors();
 	}
 
+	//I'll call fetchNeighbors after I've added, deleted, or updated stuff so I
+	//have the latest data after each action
 	fetchNeighbors = async() => {
 		const neighbors = await neighborsApi.get();
 		this.setState({neighbors});
@@ -35,6 +37,7 @@ export class NeighborsList extends React.Component{
 		console.log('number: ', number);
 		this.updateNeighbors({ ...neighbor});
 	}
+	//This function is the one that adds the neighbor notes
 	updateNeighbor =  async(existingNeighborData,neighbor_id) =>{
 		console.log('Inside NeighborList.js: updateNeighbor function');
 		console.log('existingNeighborData', existingNeighborData);

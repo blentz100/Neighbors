@@ -1,8 +1,8 @@
 import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/button';
+import ButtonGroup from 'react-bootstrap/buttongroup';
+import Container from 'react-bootstrap/container';
 import NeighborsList from './Components/NeighborsList';
 import About from './Components/About.js';
 import Resources from './Components/Resources'

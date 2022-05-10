@@ -1,165 +1,85 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useTable, useSortBy } from 'react-table'
+import React, {Component} from 'react'
 
-import makeData from '../makeData'
 
-const Styles = styled.div`
-  padding: 1rem;
+//https://www.youtube.com/watch?v=9MSvqYElHfs
 
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
 
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
+class Table extends Component{
 
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
+	constructor(props){
+		super(props)
+		this.state = {
+			users:[],
+			isLoading:false,
+			isError: false
+		}
+	}
 
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`
+	async componentDidMount(){
+		this.setState({isLoading:true})
+		const response = await fetch("https://jsonplaceholder.typicode.com/users");
+		if (response.ok){
+			const users = await response.json();
+			console.log(users);
+			this.setState({users,isLoading:false})
+		}
+		else {
+			this.setState({isError:true, isLoading:false});
+		}
+	}
 
-function Table({ columns, data }) {
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
-    {
-      columns,
-      data,
-    },
-    useSortBy
-  )
+	renderTableHeader = () => {
+		return Object.keys(this.state.users[0]).map(attr => 
+			<th key={attr}> {attr} </th>)
 
-  // We don't want to render all 2000 rows for this example, so cap
-  // it at 20 for this use case
-  const firstPageRows = rows.slice(0, 3)
+	}
 
-  return (
-    <>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                // Add the sorting props to control sorting. For this example
-                // we can add them into the header props
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render('Header')}
-                  {/* Add a sort direction indicator */}
-                  <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
-                      : ''}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {firstPageRows.map(
-            (row, i) => {
-			console.log('before prepareRow(row) - row is: ')
-			console.dir(row);
-		    prepareRow(row);
-			console.log('after prepareRow(row) - row is: ')
-			console.dir(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                    )
-                  })}
-                </tr>
-              )}
-          )}
-        </tbody>
-      </table>
-      <br />
-      <div>Showing the first 20 results of {rows.length} rows</div>
-    </>
-  )
+	renderTableRows = () => {
+		return this.state.users.map(user => {
+			return (
+				<tr key={user.id}>
+					<td> {user.id}</td>
+					<td> {user.name}</td>
+					<td> {user.username}</td>
+					<td> {user.email}</td>
+					<td> 
+					{`${user.address.street},${user.address.city}`}
+					</td>
+					<td> {user.phone}</td>
+					<td> {user.website}</td>
+					<td> {user.company.name}</td>
+				</tr>
+			)
+		})
+
+	}
+	render(){
+		const {users,isLoading,isError} = this.state;
+
+		if(isLoading){
+			return <div>Loading...</div>
+		}
+		if(isError){
+			return <div>Error...</div>
+		}
+		
+		return users.length > 0
+			? (
+				<table>
+					<thead>
+						<tr>
+							{this.renderTableHeader()}
+						</tr>
+					</thead>
+					<tbody>
+						{this.renderTableRows()}
+					</tbody>
+				</table>
+
+			):(
+				<div>No Users</div>
+			)
+		}
 }
 
-function App() {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Name',
-        columns: [
-          {
-            Header: 'Unit Number',
-            accessor: 'unitNumber',
-          },
-          {
-            Header: 'Owner Name',
-            accessor: 'ownerName',
-          },
-        ],
-      },
-      {
-        Header: 'Info',
-        columns: [
-          {
-            Header: 'Sale Price',
-            accessor: 'salePrice',
-          },
-          {
-            Header: 'Sale Date',
-            accessor: 'saleDate',
-          },
-          {
-            Header: 'Status',
-            accessor: 'status',
-          },
-          {
-            Header: 'Profile Progress',
-            accessor: 'progress',
-          },
-        ],
-      },
-    ],
-    []
-  )
-
-//Here is where the table demo code gets the fake data to populate it's table
-const data = React.useMemo(() => makeData(20), [])
-console.log ('data is');
-console.dir (data);	
-
-// Here is where I need to get the data from Maricopa API in place of the 
-// fake data above
-
-
-  return (
-    <Styles>
-      <Table columns={columns} data={data} />
-    </Styles>
-  )
-}
-
-export default App
-
-
-
+export default Table;

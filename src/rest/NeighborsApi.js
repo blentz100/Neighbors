@@ -1,4 +1,10 @@
-const NEIGHBORS_ENDPOINT = "https://crudcrud.com/api/8395807bd67349e78e6b6993d2003e8f/unicorns";
+const NEIGHBORS_ENDPOINT = "https://crudcrud.com/api/e4df58a8dad6465396947aabecd7c280/unicorns";
+// This endpoint will expire in a few days and will break the code, get a new
+// one to fix it.
+// TypeError: Cannot read properties of undefined (reading 'map')
+//NeighborsList.render
+//src/Components/NeighborsList.js:54
+
 
 class NeighborsApi{
 	/*This get request will get the list of neighbors from API */
@@ -48,6 +54,11 @@ class NeighborsApi{
 	}
 
 	/*This update request will update a single neighbor record */
+	/*CAUTION!!!!! A very common issue that students have at this step is trying
+		* to include the id in the body of the PUT method. This will likely
+		* throw an error, probably a CORS error. Must pull the id out of the
+		* body and only send the fields you want to update. The way you tell the
+		* API what you want to update is by including the id in the endpoint.*/
 	update = async (notes, neighbor_id) => {
 		try {
 			console.log('inside try block for updating a neighbor');
@@ -66,7 +77,7 @@ class NeighborsApi{
 				})
 			});
 			const data = await resp.json();
-			console.log('date is: ' + data);
+			console.log('data is: ' + data);
 			return data;
 
 		}catch(e){
@@ -100,3 +111,36 @@ class NeighborsApi{
 export const neighborsApi = new NeighborsApi();
 
 export default neighborsApi;
+
+/*
+ * Joey Wilson figured out how to get crudcrud to work with AJAX and posted it
+ * in slack. Saving it here for future reference
+ *
+ *     $.ajax({
+        method: 'POST',
+        url: "https://crudcrud.com/api/4235c72c1fe74d4889dda8128ecf8af8/user",
+        data: JSON.stringify({ name: "tom" }),
+        crossDomain: true,
+        success: function(r) {console.log(r)}
+    })
+^^ does not work.
+    $.ajax({
+        method: 'POST',
+        url: "https://crudcrud.com/api/4235c72c1fe74d4889dda8128ecf8af8/user",
+        data: JSON.stringify({ name: "tom" }),
+        success: function(r) {console.log(r)}
+    })
+^^ does not work
+    $.ajax({
+        method: 'POST',
+        url: "https://crudcrud.com/api/4235c72c1fe74d4889dda8128ecf8af8/user",
+        data: JSON.stringify({ name: "tom" }),
+        contentType: 'application/json',
+        crossDomain: true,
+        success: function(r) {console.log(r)}
+    })
+^^ works
+
+Joey Wilson  1 hour ago
+To get ajax to play nice with cors request you have to add cotentType and crossDomain to yoru settings object. (edited)
+*/
